@@ -12,15 +12,18 @@ public class OrdersData {
     public OrdersData(){
     }
 
-    public Order getOrder(Long id){
+    public Order getOrder(Long id, String login){
         for(Order order : orders){
-            if (order.getId() == id){
+            if (order.getId() == id && Objects.equals(order.getUserLogin(), login)){
                 return order;
             }
         }
         return null;
     }
     public List<Order> findAllOrders(String userLogin){
+        return orders;
+    }
+    public List<Order> findAllUsersOrders(String userLogin){
         return orders;
     }
     public Order addOrder(int calorie, String wishes, String userLogin){
@@ -39,7 +42,7 @@ public class OrdersData {
         return order;
     }
     public Order updateOrder(long id, int calorie, String wishes, String userLogin){
-        Order order = getOrder(id);
+        Order order = getOrder(id, userLogin);
         if (order == null){
             return null;
         }
@@ -54,8 +57,8 @@ public class OrdersData {
         }
         return order;
     }
-    public Order deleteOrder(Long id){
-        Order order = getOrder(id);
+    public Order deleteOrder(Long id, String userLogin){
+        Order order = getOrder(id, userLogin);
         if (order == null){
             return null;
         }

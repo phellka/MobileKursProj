@@ -70,7 +70,7 @@ public class OrdersActivity extends AppCompatActivity {
                 }
             }
             if (order != -1) {
-                ordersData.deleteOrder(order);
+                ordersData.deleteOrder(order, login);
                 adapter.notifyDataSetChanged();
             }
             listViewOrders.clearChoices();

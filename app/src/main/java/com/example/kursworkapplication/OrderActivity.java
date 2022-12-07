@@ -14,6 +14,7 @@ import com.example.kursworkapplication.data.OrdersData;
 public class OrderActivity extends AppCompatActivity {
 
     String login = "";
+    String role = "";
     long id = -1;
     OrdersData ordersData = new OrdersData();
 
@@ -25,6 +26,7 @@ public class OrderActivity extends AppCompatActivity {
         SharedPreferences sPref = getSharedPreferences("User", MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
         login = sPref.getString("login", "");
+        role = sPref.getString("role", "");
         Intent intent = getIntent();
         id = intent.getLongExtra("Id", -1);
 
@@ -33,7 +35,7 @@ public class OrderActivity extends AppCompatActivity {
         TextView wishes = findViewById(R.id.orderEditTextWishes);
 
         if (id != -1){
-            Order order = ordersData.getOrder(id);
+            Order order = ordersData.getOrder(id, login);
             if (order != null){
                 calorie.setText(String.valueOf(order.getCalorie()));
                 wishes.setText(order.getWishes());

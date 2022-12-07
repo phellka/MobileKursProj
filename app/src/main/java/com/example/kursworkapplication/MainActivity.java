@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sPref = getSharedPreferences("User", MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
         ed.putString("login", "admin");
+        ed.putString("role", "admin");
         ed.commit();
 
 
