@@ -3,23 +3,23 @@ package com.example.kursworkapplication.data;
 import java.time.LocalDateTime;
 
 public class Lunch {
-    private Long id;
+    private int id;
     private int price;
     private int weight;
-    private LocalDateTime date;
     private String uerLogin;
+    private Long order_id;
 
     @Override
     public String toString(){
-        return String.format("Lunch = {Id = %s, price = %d, weight = %d, date = %s}",
-                id.toString(), price, weight,  date.toString());
+        return String.format("Lunch = {Id = %d, price = %d, weight = %d}",
+                id, price, weight);
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -39,19 +39,19 @@ public class Lunch {
         this.weight = weight;
     }
 
-    public LocalDateTime getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDateTime date) {
-        this.date = date;
-    }
-
     public String getUerLogin() {
         return uerLogin;
     }
 
     public void setUerLogin(String uerLogin) {
         this.uerLogin = uerLogin;
+    }
+
+    public Long getOrder_id() {
+        return order_id;
+    }
+
+    public void setOrder_id(Long order_id) {
+        this.order_id = order_id;
     }
 }

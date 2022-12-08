@@ -19,7 +19,7 @@ import java.util.List;
 public class OrdersActivity extends AppCompatActivity {
 
     String login = "";
-    OrdersData ordersData = new OrdersData();
+    OrdersData ordersData;
     ArrayAdapter<Order> adapter;
     ListView listViewOrders;
 
@@ -31,6 +31,7 @@ public class OrdersActivity extends AppCompatActivity {
         SharedPreferences sPref = getSharedPreferences("User", MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
         login = sPref.getString("login", "");
+        ordersData = new OrdersData(this, login);
 
         listViewOrders = findViewById(R.id.ordersListView);
         Button add = findViewById(R.id.ordersButtonAdd);
@@ -41,14 +42,16 @@ public class OrdersActivity extends AppCompatActivity {
                 ordersData.findAllOrders(login));
         listViewOrders.setAdapter(adapter);
         listViewOrders.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        adapter.notifyDataSetChanged();
 
         add.setOnClickListener(v -> {
             Intent intent = new Intent(this, OrderActivity.class);
-            startActivity(intent);
+            //startActivity(intent);
+            startActivityForResult(intent, 99);
             adapter.notifyDataSetChanged();
         });
         upd.setOnClickListener(v -> {
-            long order = -1;
+            int order = -1;
             SparseBooleanArray sparseBooleanArray = listViewOrders.getCheckedItemPositions();
             for (int i = 0; i < listViewOrders.getCount(); ++i){
                 if(sparseBooleanArray.get(i) == true){
@@ -57,12 +60,13 @@ public class OrdersActivity extends AppCompatActivity {
             }
             Intent intent = new Intent(this, OrderActivity.class);
             intent.putExtra("Id", order);
-            startActivity(intent);
+            //startActivity(intent);
+            startActivityForResult(intent, 99);
             adapter.notifyDataSetChanged();
             listViewOrders.clearChoices();
         });
         del.setOnClickListener(v -> {
-            long order = -1;
+            int order = -1;
             SparseBooleanArray sparseBooleanArray = listViewOrders.getCheckedItemPositions();
             for (int i = 0; i < listViewOrders.getCount(); ++i) {
                 if (sparseBooleanArray.get(i) == true) {
@@ -75,5 +79,11 @@ public class OrdersActivity extends AppCompatActivity {
             }
             listViewOrders.clearChoices();
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        adapter.notifyDataSetChanged();
     }
 }

@@ -2,11 +2,13 @@ package com.example.kursworkapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.kursworkapplication.data.Order;
 import com.example.kursworkapplication.data.OrdersData;
@@ -15,8 +17,8 @@ public class OrderActivity extends AppCompatActivity {
 
     String login = "";
     String role = "";
-    long id = -1;
-    OrdersData ordersData = new OrdersData();
+    int id = -1;
+    OrdersData ordersData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +28,10 @@ public class OrderActivity extends AppCompatActivity {
         SharedPreferences sPref = getSharedPreferences("User", MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
         login = sPref.getString("login", "");
+        ordersData = new OrdersData(this, login);
         role = sPref.getString("role", "");
         Intent intent = getIntent();
-        id = intent.getLongExtra("Id", -1);
+        id = intent.getIntExtra("Id", -1);
 
         Button save = findViewById(R.id.orderButtonSave);
         TextView calorie = findViewById(R.id.orderEditTextCalorie);
@@ -43,6 +46,12 @@ public class OrderActivity extends AppCompatActivity {
         }
 
         save.setOnClickListener(v -> {
+            if (calorie.getText().toString().equals("") ||
+                    !android.text.TextUtils.isDigitsOnly(calorie.getText().toString())){
+                Toast.makeText(this, "Калории не должны быть пустым числом",
+                        Toast.LENGTH_LONG).show();
+                return;
+            }
             int cal = Integer.parseInt(calorie.getText().toString());
             String wish = wishes.getText().toString();
             if (id != -1){
@@ -51,6 +60,9 @@ public class OrderActivity extends AppCompatActivity {
             else {
                 ordersData.addOrder(cal, wish, login);
             }
+            //finish();
+            Intent data = new Intent();
+            setResult(Activity.RESULT_OK, data);
             finish();
         });
     }

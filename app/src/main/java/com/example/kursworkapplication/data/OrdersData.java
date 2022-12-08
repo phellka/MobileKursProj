@@ -1,6 +1,9 @@
 package com.example.kursworkapplication.data;
 
+import android.content.Context;
+
 import com.example.kursworkapplication.OrdersActivity;
+import com.example.kursworkapplication.data.DBs.OrdersDB;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,66 +11,59 @@ import java.util.Objects;
 
 public class OrdersData {
     private static ArrayList<Order> orders  = new ArrayList<Order>();
+    OrdersDB ordersDB;
 
-    public OrdersData(){
+    public OrdersData(Context context, String userLogin){
+        ordersDB = new OrdersDB(context);
+        readAll(userLogin);
     }
 
-    public Order getOrder(Long id, String login){
-        for(Order order : orders){
-            if (order.getId() == id && Objects.equals(order.getUserLogin(), login)){
-                return order;
-            }
-        }
-        return null;
+    public Order getOrder(int id, String login){
+        Order ord = new Order();
+        ord.setId(id);
+        ord.setUserLogin(login);
+        return ordersDB.get(ord);
     }
     public List<Order> findAllOrders(String userLogin){
         return orders;
     }
     public List<Order> findAllUsersOrders(String userLogin){
-        return orders;
+        User ord = new User();
+        ord.setLogin(userLogin);
+        return ordersDB.readAllUsers(ord);
     }
-    public Order addOrder(int calorie, String wishes, String userLogin){
+
+    public void addOrder(int calorie, String wishes, String userLogin){
         Order order = new Order();
         order.setCalorie(calorie);
         order.setUserLogin(userLogin);
         order.setWishes(wishes);
-        long id = 1;
-        for(Order ord : orders){
-            if (ord.getId() >= id){
-                id = ord.getId() + 1;
-            }
-        }
-        order.setId(id);
-        orders.add(order);
-        return order;
+        ordersDB.add(order);
+        readAll(userLogin);
     }
-    public Order updateOrder(long id, int calorie, String wishes, String userLogin){
-        Order order = getOrder(id, userLogin);
-        if (order == null){
-            return null;
-        }
+    public void updateOrder(int id, int calorie, String wishes, String userLogin){
+        Order order = new Order();
+        order.setId(id);
         order.setCalorie(calorie);
         order.setUserLogin(userLogin);
-        order.setWishes(wishes);;
-        for(int i = 0; i < orders.size(); ++i){
-            if (orders.get(i).getId() == id){
-                orders.set(i, order);
-                break;
-            }
-        }
-        return order;
+        order.setWishes(wishes);
+        ordersDB.update(order);
+        readAll(userLogin);
     }
-    public Order deleteOrder(Long id, String userLogin){
-        Order order = getOrder(id, userLogin);
-        if (order == null){
-            return null;
+    public void deleteOrder(int id, String userLogin){
+        Order order = new Order();
+        order.setId(id);
+        order.setUserLogin(userLogin);
+        ordersDB.delete(order);
+        readAll(userLogin);
+    }
+    private void readAll(String userLogin){
+        User usr = new User();
+        usr.setLogin(userLogin);
+        List<Order> ords = ordersDB.readAll(usr);
+        orders.clear();
+        for(Order order : ords){
+            orders.add(order);
         }
-        for(int i = 0; i < orders.size(); ++i){
-            if (orders.get(i).getId() == id){
-                orders.remove(i);
-                return order;
-            }
-        }
-        return null;
     }
 }

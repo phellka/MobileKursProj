@@ -9,6 +9,9 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+    String login = "";
+    String role = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,9 +20,8 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences sPref = getSharedPreferences("User", MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
-        ed.putString("login", "admin");
-        ed.putString("role", "admin");
-        ed.commit();
+        login = sPref.getString("login", "");
+        role = sPref.getString("role", "");
 
 
         Button lunches = findViewById(R.id.mainButtonLunch);

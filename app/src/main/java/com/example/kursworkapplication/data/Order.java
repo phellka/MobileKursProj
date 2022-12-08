@@ -1,22 +1,22 @@
 package com.example.kursworkapplication.data;
 
 public class Order {
-    private Long id;
+    private int id;
     private int calorie;
     private String wishes;
     private String userLogin;
 
     @Override
     public String toString(){
-        return String.format("Order = {Id = %s, calorie = %d, wishes = %s}",
-                id.toString(), calorie, wishes);
+        return String.format("Order = {Id = %d, calorie = %d, wishes = %s}",
+                id, calorie, wishes);
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
