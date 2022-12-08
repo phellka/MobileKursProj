@@ -6,8 +6,8 @@ public class Lunch {
     private int id;
     private int price;
     private int weight;
-    private String uerLogin;
-    private Long order_id;
+    private String userLogin;
+    private int order_id;
 
     @Override
     public String toString(){
@@ -39,19 +39,19 @@ public class Lunch {
         this.weight = weight;
     }
 
-    public String getUerLogin() {
-        return uerLogin;
+    public String getUserLogin() {
+        return userLogin;
     }
 
-    public void setUerLogin(String uerLogin) {
-        this.uerLogin = uerLogin;
+    public void setUserLogin(String uerLogin) {
+        this.userLogin = uerLogin;
     }
 
-    public Long getOrder_id() {
+    public int getOrder_id() {
         return order_id;
     }
 
-    public void setOrder_id(Long order_id) {
+    public void setOrder_id(int order_id) {
         this.order_id = order_id;
     }
 }

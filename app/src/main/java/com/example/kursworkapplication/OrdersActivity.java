@@ -58,6 +58,9 @@ public class OrdersActivity extends AppCompatActivity {
                     order = adapter.getItem(i).getId();
                 }
             }
+            if (order == -1){
+                return;
+            }
             Intent intent = new Intent(this, OrderActivity.class);
             intent.putExtra("Id", order);
             //startActivity(intent);

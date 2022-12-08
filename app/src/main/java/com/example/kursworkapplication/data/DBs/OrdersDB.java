@@ -18,9 +18,13 @@ import java.util.Objects;
 
 public class OrdersDB {
     private DBHelper dbHelper;
+    private LunchesDB lunchesDB;
+    private CutleriesDB cutleriesDB;
 
     public OrdersDB(Context context){
         dbHelper = new DBHelper(context);
+        lunchesDB = new LunchesDB(context);
+        cutleriesDB = new CutleriesDB(context);
     }
 
     public Order get(Order order){
@@ -74,6 +78,8 @@ public class OrdersDB {
         if (get(order) == null){
             return;
         }
+        lunchesDB.delete(order);
+        cutleriesDB.delete(order);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.delete("orders", "id = " + order.getId(), null);
         dbHelper.close();
