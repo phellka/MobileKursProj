@@ -2,6 +2,8 @@ package com.example.kursworkapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -73,10 +75,20 @@ public class CutleriesActivity extends AppCompatActivity {
                 }
             }
             if (cutlery != -1) {
-                cutleriesData.deletecutlery(cutlery, login);
+                int finalCutlery = cutlery;
+                new AlertDialog.Builder(this)
+                        .setTitle("Удаление")
+                        .setMessage("Вы уверены что хотите удалить запись?")
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                cutleriesData.deletecutlery(finalCutlery, login);
+                                listViewCutleries.clearChoices();
+                                adapter.notifyDataSetChanged();
+                            }})
+                        .setNegativeButton("Нет", null).show();
                 adapter.notifyDataSetChanged();
             }
-            listViewCutleries.clearChoices();
         });
     }
 

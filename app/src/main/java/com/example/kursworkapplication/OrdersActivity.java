@@ -2,6 +2,8 @@ package com.example.kursworkapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.util.SparseBooleanArray;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.kursworkapplication.data.Order;
 import com.example.kursworkapplication.data.OrdersData;
@@ -77,10 +80,20 @@ public class OrdersActivity extends AppCompatActivity {
                 }
             }
             if (order != -1) {
-                ordersData.deleteOrder(order, login);
+                int finalOrder = order;
+                new AlertDialog.Builder(this)
+                        .setTitle("Удаление")
+                        .setMessage("Вы уверены что хотите удалить запись?")
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                ordersData.deleteOrder(finalOrder, login);
+                                listViewOrders.clearChoices();
+                                adapter.notifyDataSetChanged();
+                            }})
+                        .setNegativeButton("Нет", null).show();
                 adapter.notifyDataSetChanged();
             }
-            listViewOrders.clearChoices();
         });
     }
 

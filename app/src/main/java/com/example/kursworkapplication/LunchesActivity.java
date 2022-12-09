@@ -2,6 +2,8 @@ package com.example.kursworkapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -71,10 +73,20 @@ public class LunchesActivity extends AppCompatActivity {
                 }
             }
             if (lunch != -1) {
-                lunchesData.deleteLunch(lunch, login);
+                int finalLunch = lunch;
+                new AlertDialog.Builder(this)
+                        .setTitle("Удаление")
+                        .setMessage("Вы уверены что хотите удалить запись?")
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                lunchesData.deleteLunch(finalLunch, login);
+                                listViewLunches.clearChoices();
+                                adapter.notifyDataSetChanged();
+                            }})
+                        .setNegativeButton("Нет", null).show();
                 adapter.notifyDataSetChanged();
             }
-            listViewLunches.clearChoices();
         });
     }
 
