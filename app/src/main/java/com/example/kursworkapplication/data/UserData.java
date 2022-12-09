@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.example.kursworkapplication.data.DBs.UserDB;
 
+import java.util.List;
+
 public class UserData {
     private UserDB userDB;
 
@@ -29,5 +31,12 @@ public class UserData {
         catch(Exception ex){
             return null;
         }
+    }
+
+    public List<User> readAll(String login, String role){
+        User user = new User();
+        user.setLogin(login);
+        user.setRole(role);
+        return userDB.readAll(user);
     }
 }

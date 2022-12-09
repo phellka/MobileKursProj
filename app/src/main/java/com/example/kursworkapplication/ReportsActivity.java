@@ -2,6 +2,7 @@ package com.example.kursworkapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -27,16 +28,23 @@ public class ReportsActivity extends AppCompatActivity {
 
         Button lunches = findViewById(R.id.reportsButtonLunches);
         Button cutleries = findViewById(R.id.reportsButtonCutleries);
-        Button allLunches = findViewById(R.id.reportsButtonAllLunches);
-        Button allCutleries = findViewById(R.id.reportsButtonAllCutleries);
+        Button allUsers = findViewById(R.id.reportsButtonAllUsers);
 
         if (!Objects.equals(role, "admin")){
-            allCutleries.setVisibility(View.INVISIBLE);
-            allLunches.setVisibility(View.INVISIBLE);
+            allUsers.setVisibility(View.INVISIBLE);
         }
 
-        allLunches.setOnClickListener(v -> {
-            int a = 10;
+        allUsers.setOnClickListener(v -> {
+            Intent intent = new Intent(this, reportUsersActivity.class);
+            startActivity(intent);
+        });
+        cutleries.setOnClickListener(v -> {
+            Intent intent = new Intent(this, reportCutleriesOrdersActivity.class);
+            startActivity(intent);
+        });
+        lunches.setOnClickListener(v -> {
+            Intent intent = new Intent(this, reportChoseOrdersActivity.class);
+            startActivity(intent);
         });
     }
 }

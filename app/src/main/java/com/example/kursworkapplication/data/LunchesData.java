@@ -65,4 +65,9 @@ public class LunchesData {
             lunches.add(lunch);
         }
     }
+    public List<Lunch> readAllLunches(String userLogin){
+        User usr = new User();
+        usr.setLogin(userLogin);
+        return lunchesDB.readAll(usr);
+    }
 }

@@ -66,4 +66,9 @@ public class OrdersData {
             orders.add(order);
         }
     }
+    public List<Order> readAllOrders(String userLogin){
+        User usr = new User();
+        usr.setLogin(userLogin);
+        return ordersDB.readAll(usr);
+    }
 }

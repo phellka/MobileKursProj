@@ -63,8 +63,12 @@ public class CutleriesData {
         for(Cutlery cutlery : cutlerys){
             cutleries.add(cutlery);
         }
-
         usr.setRole("admin");
         cutlerys = cutleriesDB.readAllUsers(usr);
+    }
+    public List<Cutlery> readAllCutleries(String userLogin){
+        User usr = new User();
+        usr.setLogin(userLogin);
+        return cutleriesDB.readAll(usr);
     }
 }

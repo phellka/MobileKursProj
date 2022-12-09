@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.kursworkapplication.data.Order;
 import com.example.kursworkapplication.data.User;
 
 import java.io.FileInputStream;
@@ -72,6 +73,29 @@ public class UserDB {
         return null;
     }
 
+    public List<User> readAll(User user){
+        if (!Objects.equals(user.getRole(), "admin")){
+            return null;
+        }
+        List<User> retList = new ArrayList<User>();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor c = db.query("users", null, null,
+                null, null, null, null);
+        if (c.moveToFirst()){
+            int idIndex = c.getColumnIndex("id");
+            int logIndex = c.getColumnIndex("login");
+            int rolIndex = c.getColumnIndex("role");
+            do{
+                User usr = new User();
+                usr.setId(c.getInt(idIndex));
+                usr.setRole(c.getString(rolIndex));
+                usr.setLogin(c.getString(logIndex));
+                retList.add(usr);
+            } while(c.moveToNext());
+        }
+        dbHelper.close();
+        return retList;
+    }
 
     class DBHelper extends SQLiteOpenHelper {
 
