@@ -11,6 +11,11 @@ public class Lunch {
 
     @Override
     public String toString(){
+        return String.format("Id = %d, цена = %d, вес = %d",
+                id, price, weight);
+    }
+
+    public String toEngString(){
         return String.format("Lunch = {Id = %d, price = %d, weight = %d}",
                 id, price, weight);
     }

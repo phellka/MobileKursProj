@@ -8,6 +8,11 @@ public class Order {
 
     @Override
     public String toString(){
+        return String.format("Id = %d, калории = %d, wishes = %s",
+                id, calorie, wishes);
+    }
+
+    public String toEngString(){
         return String.format("Order = {Id = %d, calorie = %d, wishes = %s}",
                 id, calorie, wishes);
     }

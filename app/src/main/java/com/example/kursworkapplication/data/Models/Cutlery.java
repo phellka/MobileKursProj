@@ -9,6 +9,11 @@ public class Cutlery {
 
     @Override
     public String toString(){
+        return String.format("Id = %d, колич. = %d, названиеZZ = %s",
+                id, count, name);
+    }
+
+    public String toEngString(){
         return String.format("Cutlery = {Id = %d, count = %d, name = %s}",
                 id, count, name);
     }

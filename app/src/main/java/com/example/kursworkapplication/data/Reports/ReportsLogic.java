@@ -50,9 +50,9 @@ public class ReportsLogic {
         for(int i = 0; i < cutleries.size(); ++i){
             cutleriesOrders cut = new cutleriesOrders();
             if (i == 0 || cutleries.get(i).getOrder_id() != cutleries.get(i - 1).getOrder_id()){
-                cut.setOrder(ordersData.getOrder(cutleries.get(i).getOrder_id(), login).toString());
+                cut.setOrder(ordersData.getOrder(cutleries.get(i).getOrder_id(), login).toEngString());
             }
-            cut.setCutlery(cutleries.get(i).toString());
+            cut.setCutlery(cutleries.get(i).toEngString());
             retList.add(cut);
         }
         return retList;
@@ -71,9 +71,9 @@ public class ReportsLogic {
         for(int i = 0; i < lunches.size(); ++i){
             lunchesOrders lnd = new lunchesOrders();
             if (i == 0 || lunches.get(i).getOrder_id() != lunches.get(i - 1).getOrder_id()){
-                lnd.setOrder(ordersData.getOrder(lunches.get(i).getOrder_id(), login).toString());
+                lnd.setOrder(ordersData.getOrder(lunches.get(i).getOrder_id(), login).toEngString());
             }
-            lnd.setLunch(lunches.get(i).toString());
+            lnd.setLunch(lunches.get(i).toEngString());
             retList.add(lnd);
         }
         return retList;
