@@ -78,6 +78,11 @@ public class LunchActivity extends AppCompatActivity {
             }
             int pr = Integer.parseInt(price.getText().toString());
             int we = Integer.parseInt(weight.getText().toString());
+            if (pr <= 0 || we <= 0){
+                Toast.makeText(this, "Цена и вес должны быть больше нуля",
+                        Toast.LENGTH_LONG).show();
+                return;
+            }
             if (id != -1){
                 lunchesData.updateLunch(id, pr, we, login,
                         adapter.getItem((int) spinner.getSelectedItemId()).getId());

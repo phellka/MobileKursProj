@@ -54,6 +54,11 @@ public class OrderActivity extends AppCompatActivity {
             }
             int cal = Integer.parseInt(calorie.getText().toString());
             String wish = wishes.getText().toString();
+            if (cal < 0){
+                Toast.makeText(this, "Калории должны быть не менее нуля",
+                        Toast.LENGTH_LONG).show();
+                return;
+            }
             if (id != -1){
                 ordersData.updateOrder(id, cal, wish, login);
             }

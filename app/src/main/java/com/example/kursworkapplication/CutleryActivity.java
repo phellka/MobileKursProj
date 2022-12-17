@@ -79,6 +79,11 @@ public class CutleryActivity extends AppCompatActivity {
             }
             int co = Integer.parseInt(count.getText().toString());
             String na = name.getText().toString();
+            if (co <= 0){
+                Toast.makeText(this, "Количество должно быть больше нуля",
+                        Toast.LENGTH_LONG).show();
+                return;
+            }
             if (id != -1){
                 cutleriesData.updatecutlery(id, co, na, login,
                         adapter.getItem((int) spinner.getSelectedItemId()).getId());
