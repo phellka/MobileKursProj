@@ -3,14 +3,13 @@ package com.example.kursworkapplication.data.Reports;
 
 import android.content.Context;
 
-import com.example.kursworkapplication.data.CutleriesData;
-import com.example.kursworkapplication.data.Cutlery;
-import com.example.kursworkapplication.data.Lunch;
-import com.example.kursworkapplication.data.LunchesData;
-import com.example.kursworkapplication.data.Order;
-import com.example.kursworkapplication.data.OrdersData;
-import com.example.kursworkapplication.data.User;
-import com.example.kursworkapplication.data.UserData;
+import com.example.kursworkapplication.data.BusinessLogic.CutleriesData;
+import com.example.kursworkapplication.data.Models.Cutlery;
+import com.example.kursworkapplication.data.Models.Lunch;
+import com.example.kursworkapplication.data.BusinessLogic.LunchesData;
+import com.example.kursworkapplication.data.BusinessLogic.OrdersData;
+import com.example.kursworkapplication.data.Models.User;
+import com.example.kursworkapplication.data.BusinessLogic.UserData;
 
 import java.util.ArrayList;
 import java.util.Comparator;

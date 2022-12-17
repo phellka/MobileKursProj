@@ -1,4 +1,4 @@
-package com.example.kursworkapplication.data.DBs;
+package com.example.kursworkapplication.data.DataBasesImplements;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,9 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.kursworkapplication.data.Cutlery;
-import com.example.kursworkapplication.data.Order;
-import com.example.kursworkapplication.data.User;
+import com.example.kursworkapplication.data.Models.Cutlery;
+import com.example.kursworkapplication.data.Models.Order;
+import com.example.kursworkapplication.data.Models.User;
 
 import java.util.ArrayList;
 import java.util.List;

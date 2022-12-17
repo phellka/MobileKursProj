@@ -28,10 +28,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.kursworkapplication.data.OrdersData;
 import com.example.kursworkapplication.data.Reports.ReportsLogic;
-import com.example.kursworkapplication.data.Reports.allUsersUnit;
-import com.example.kursworkapplication.data.Reports.cutleriesOrders;
 import com.example.kursworkapplication.data.Reports.lunchesOrders;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Paragraph;

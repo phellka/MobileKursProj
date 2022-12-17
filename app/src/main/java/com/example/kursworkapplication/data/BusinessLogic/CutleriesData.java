@@ -1,8 +1,10 @@
-package com.example.kursworkapplication.data;
+package com.example.kursworkapplication.data.BusinessLogic;
 
 import android.content.Context;
 
-import com.example.kursworkapplication.data.DBs.CutleriesDB;
+import com.example.kursworkapplication.data.Models.Cutlery;
+import com.example.kursworkapplication.data.DataBasesImplements.CutleriesDB;
+import com.example.kursworkapplication.data.Models.User;
 
 import java.util.ArrayList;
 import java.util.List;

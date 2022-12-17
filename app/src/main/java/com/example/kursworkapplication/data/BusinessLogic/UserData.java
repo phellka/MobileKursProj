@@ -1,8 +1,9 @@
-package com.example.kursworkapplication.data;
+package com.example.kursworkapplication.data.BusinessLogic;
 
 import android.content.Context;
 
-import com.example.kursworkapplication.data.DBs.UserDB;
+import com.example.kursworkapplication.data.DataBasesImplements.UserDB;
+import com.example.kursworkapplication.data.Models.User;
 
 import java.util.List;
 

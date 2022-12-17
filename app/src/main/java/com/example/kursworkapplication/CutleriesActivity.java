@@ -12,10 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.kursworkapplication.data.CutleriesData;
-import com.example.kursworkapplication.data.Cutlery;
-import com.example.kursworkapplication.data.Lunch;
-import com.example.kursworkapplication.data.LunchesData;
+import com.example.kursworkapplication.data.BusinessLogic.CutleriesData;
+import com.example.kursworkapplication.data.Models.Cutlery;
 
 public class CutleriesActivity extends AppCompatActivity {
     String login = "";

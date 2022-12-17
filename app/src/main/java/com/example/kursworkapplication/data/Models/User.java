@@ -1,4 +1,4 @@
-package com.example.kursworkapplication.data;
+package com.example.kursworkapplication.data.Models;
 
 public class User {
     private int id;

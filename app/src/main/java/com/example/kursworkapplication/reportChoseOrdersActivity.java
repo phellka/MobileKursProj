@@ -11,8 +11,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.kursworkapplication.data.Order;
-import com.example.kursworkapplication.data.OrdersData;
+import com.example.kursworkapplication.data.Models.Order;
+import com.example.kursworkapplication.data.BusinessLogic.OrdersData;
 
 import java.util.ArrayList;
 import java.util.List;

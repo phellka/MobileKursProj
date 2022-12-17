@@ -12,8 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.kursworkapplication.data.Lunch;
-import com.example.kursworkapplication.data.LunchesData;
+import com.example.kursworkapplication.data.Models.Lunch;
+import com.example.kursworkapplication.data.BusinessLogic.LunchesData;
 
 public class LunchesActivity extends AppCompatActivity {
     String login = "";

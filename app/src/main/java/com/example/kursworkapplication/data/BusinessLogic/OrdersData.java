@@ -1,13 +1,13 @@
-package com.example.kursworkapplication.data;
+package com.example.kursworkapplication.data.BusinessLogic;
 
 import android.content.Context;
 
-import com.example.kursworkapplication.OrdersActivity;
-import com.example.kursworkapplication.data.DBs.OrdersDB;
+import com.example.kursworkapplication.data.DataBasesImplements.OrdersDB;
+import com.example.kursworkapplication.data.Models.Order;
+import com.example.kursworkapplication.data.Models.User;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class OrdersData {
     private static ArrayList<Order> orders  = new ArrayList<Order>();

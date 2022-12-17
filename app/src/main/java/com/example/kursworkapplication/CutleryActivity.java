@@ -12,12 +12,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.kursworkapplication.data.CutleriesData;
-import com.example.kursworkapplication.data.Cutlery;
-import com.example.kursworkapplication.data.Lunch;
-import com.example.kursworkapplication.data.LunchesData;
-import com.example.kursworkapplication.data.Order;
-import com.example.kursworkapplication.data.OrdersData;
+import com.example.kursworkapplication.data.BusinessLogic.CutleriesData;
+import com.example.kursworkapplication.data.Models.Cutlery;
+import com.example.kursworkapplication.data.Models.Order;
+import com.example.kursworkapplication.data.BusinessLogic.OrdersData;
 
 public class CutleryActivity extends AppCompatActivity {
     String login = "";

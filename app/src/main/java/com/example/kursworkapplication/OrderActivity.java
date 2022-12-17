@@ -10,8 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.kursworkapplication.data.Order;
-import com.example.kursworkapplication.data.OrdersData;
+import com.example.kursworkapplication.data.Models.Order;
+import com.example.kursworkapplication.data.BusinessLogic.OrdersData;
 
 public class OrderActivity extends AppCompatActivity {
 

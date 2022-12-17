@@ -11,13 +11,9 @@ import android.util.SparseBooleanArray;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.example.kursworkapplication.data.Order;
-import com.example.kursworkapplication.data.OrdersData;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.kursworkapplication.data.Models.Order;
+import com.example.kursworkapplication.data.BusinessLogic.OrdersData;
 
 public class OrdersActivity extends AppCompatActivity {
 

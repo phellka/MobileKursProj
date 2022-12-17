@@ -1,9 +1,11 @@
-package com.example.kursworkapplication.data;
+package com.example.kursworkapplication.data.BusinessLogic;
 
 
 import android.content.Context;
 
-import com.example.kursworkapplication.data.DBs.LunchesDB;
+import com.example.kursworkapplication.data.DataBasesImplements.LunchesDB;
+import com.example.kursworkapplication.data.Models.Lunch;
+import com.example.kursworkapplication.data.Models.User;
 
 import java.util.ArrayList;
 import java.util.List;

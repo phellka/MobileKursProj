@@ -9,8 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.kursworkapplication.data.User;
-import com.example.kursworkapplication.data.UserData;
+import com.example.kursworkapplication.data.Models.User;
+import com.example.kursworkapplication.data.BusinessLogic.UserData;
 
 public class AutorizationActivity extends AppCompatActivity {
 
